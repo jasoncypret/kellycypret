@@ -10,6 +10,6 @@ bundle exec middleman server
 ## Publish to GitHub Pages
 
 ```sh
-rake build    # Compile all files into the build directory
-rake publish  # Build and publish to Github Pages
+bundle exec rake build # Compile all files into the build directory
+bundle exec rake publish ALLOW_DIRTY=true # Build and publish to Github Pages
 ```
