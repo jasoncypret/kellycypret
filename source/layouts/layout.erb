@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><%= current_page.data.title || "Kelly Cypret - Realtor ⓡ" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag "flaticon" %>
+    <%= stylesheet_link_tag "site" %>
+    
+  </head>
+  <body>
+    <%= partial "layouts/nav" %>
+    <%= yield %>
+    <%= partial "layouts/footer" %>
+  </body>
+  
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <%= javascript_include_tag "jquery.min" %>
+  <%= javascript_include_tag "jquery-migrate-3.0.1.min" %>
+  <%= javascript_include_tag "popper.min" %>
+  <%= javascript_include_tag "bootstrap.min" %>
+  <%= javascript_include_tag "jquery.easing.1.3" %>
+  <%= javascript_include_tag "jquery.waypoints.min" %>
+  <%= javascript_include_tag "jquery.stellar.min" %>
+  <%= javascript_include_tag "owl.carousel.min" %>
+  <%= javascript_include_tag "jquery.magnific-popup.min" %>
+  <%= javascript_include_tag "jquery.animateNumber.min" %>
+  <%= javascript_include_tag "scrollax.min" %>
+  <% #<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> %>
+  <% # javascript_include_tag "google-map" %>
+  <%= javascript_include_tag "site" %>
+</html>
