@@ -1,0 +1,17 @@
+{
+    "homes": [
+      {
+        "status": "Sale Pending",
+        "old_price": "$529,900",
+        "price": "$499,900",
+        "bedrooms": "5 Bedrooms",
+        "bathrooms": "4 Bathrooms",
+        "squarefoot": "3,921",
+        "address": "811 Mallard Pointe Dr",
+        "city_state": "Cedar Hill, TX",
+        "url": "https://vtour.realtour.biz/811MallardPointeDr/CedarHill/TX",
+        "comments": "Reduced!",
+        "image": "images/homes/cedar-hill-mallard-pointe.jpg"
+      }
+    ]
+  }

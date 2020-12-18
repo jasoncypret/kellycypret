@@ -1,6 +1,20 @@
 # Kelly Cypret
 The Middleman Site for kellycypret.com
 
+## Getting started
+
+This site runs on asdf. Make sure you have that installed with ruby and run:
+
+```sh
+asdf install
+```
+
+Once run you can bundle like normal.
+
+```sh
+bundle install
+```
+
 ## Build the site
 
 ```sh
