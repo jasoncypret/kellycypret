@@ -1,7 +1,7 @@
 {
     "homes": [
       {
-        "status": "Sale Pending",
+        "status": "Sold",
         "old_price": "$529,900",
         "price": "$499,900",
         "bedrooms": "5 Bedrooms",
@@ -9,8 +9,23 @@
         "squarefoot": "3,921",
         "address": "811 Mallard Pointe Dr",
         "city_state": "Cedar Hill, TX",
-        "url": "https://vtour.realtour.biz/811MallardPointeDr/CedarHill/TX",
-        "comments": "Reduced!",
+        "url": "https://www.nrrtsold.com/team/kelly-cypret",
+        "comments": "2 Weeks Ago",
+        "kelly_comments": "Reduced!",
+        "image": "images/homes/cedar-hill-mallard-pointe.jpg"
+      },
+      {
+        "status": "Sold",
+        "old_price": "$529,900",
+        "price": "$499,900",
+        "bedrooms": "5 Bedrooms",
+        "bathrooms": "4 Bathrooms",
+        "squarefoot": "3,921",
+        "address": "811 Mallard Pointe Dr",
+        "city_state": "Cedar Hill, TX",
+        "url": "https://www.nrrtsold.com/team/kelly-cypret",
+        "comments": "Last Month",
+        "kelly_comments": "What a deal!",
         "image": "images/homes/cedar-hill-mallard-pointe.jpg"
       }
     ]
