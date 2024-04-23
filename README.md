@@ -21,9 +21,17 @@ bundle install
 bundle exec middleman server
 ```
 
-## Publish to GitHub Pages
+## Test Build before Publishing to GitHub Pages
 
 ```sh
 bundle exec rake build # Compile all files into the build directory
+```
+
+
+## Publish to GitHub Pages
+
+Clear build folder before this step
+
+```sh
 bundle exec rake publish ALLOW_DIRTY=true # Build and publish to Github Pages
 ```
