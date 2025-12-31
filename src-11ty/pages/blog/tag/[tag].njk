@@ -1,0 +1,50 @@
+---
+pagination:
+  data: collections.allTags
+  size: 1
+  alias: tag
+permalink: "/blog/tag/{{ tag }}/"
+layout: layout.njk
+showHomeHero: false
+---
+
+{% set tagTitle = tag | tagTitle %}
+{% set title = "Tag: " + tagTitle %}
+{% set breadcrumbs = [
+  { label: "Blog", url: "/blog/" },
+  { label: "Tag: " + tagTitle, url: "/blog/tag/" + tag + "/" }
+] %}
+{% include "blog/post-hero.njk" %}
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row d-flex">
+      {% set filteredPosts = [] %}
+      {% for post in collections.blog %}
+        {% if post.data.tags %}
+          {% set hasTag = false %}
+          {% for postTag in post.data.tags %}
+            {% if postTag == tag %}
+              {% set hasTag = true %}
+            {% endif %}
+          {% endfor %}
+          {% if hasTag %}
+            {% set filteredPosts = (filteredPosts.push(post), filteredPosts) %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if filteredPosts.length > 0 %}
+        {% for post in filteredPosts %}
+          {% set post = post %}
+          {% include "blog/post-card.njk" %}
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p>No posts found with the tag "{{ tag }}".</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+

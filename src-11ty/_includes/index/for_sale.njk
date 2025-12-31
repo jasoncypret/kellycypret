@@ -1,0 +1,61 @@
+<section class="ftco-section" id="properties">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 heading-section text-center ftco-animate mb-5">
+				<span class="subheading">Properties</span>
+				<h2 class="mb-2">For Sale</h2>
+			</div>
+		</div>
+		<div class="row ftco-animate">
+			<div class="col-md-12">
+				{% set featuredListings = [] %}
+				{% for listing in collections.listings %}
+					{% if listing.data.featured %}
+						{% set featuredListings = (featuredListings.push(listing), featuredListings) %}
+					{% endif %}
+				{% endfor %}
+				<div class="{% if featuredListings.length > 1 %}carousel-properties owl-carousel{% endif %}">
+					{% for listing in featuredListings %}
+						<div class="item">
+							<div class="property-wrap ftco-animate">
+								<a href="{{ listing.data.external_url }}" class="img" style="background-image: url({{ listing.data.hero_image }});">
+									<div class="rent-sale">
+										<span class="sale">{{ listing.data.status }}</span>
+									</div>
+									<p class="price">
+										<!-- IF OLD PRICE -->
+										{% if listing.data.old_price %}
+											<span class="old-price">{{ listing.data.old_price }}</span>
+										{% endif %}
+										<!-- IF OLD PRICE -->
+										<span class="orig-price">{{ listing.data.price }}</span>
+									</p>
+								</a>
+								<div class="text">
+									<ul class="property_list">
+										<li><span class="fi flaticon-bed"></span>{{ listing.data.bedrooms }}</li>
+										<li><span class="fi flaticon-bathtub"></span>{{ listing.data.bathrooms }}</li>
+										<li><span class="fi flaticon-floor-plan"></span>{{ listing.data.squarefoot }}</li>
+									</ul>
+									<h3><a href="{{ listing.data.external_url }}">{{ listing.data.address }}</a></h3>
+									<span class="location">{{ listing.data.city }}, {{ listing.data.state }}</span>
+									<a href="{{ listing.data.external_url }}" class="d-flex align-items-center justify-content-center btn-custom">
+										<span class="fa fa-link"></span>
+									</a>
+									<div class="list-team d-flex align-items-center mt-2 pt-2 border-top">
+										<div class="d-flex align-items-center">
+											<div class="img" style="background-image: url(/assets/images/kelly-thumb.jpg);"></div>
+											<h3 class="ml-2">{{ listing.data.kelly_comments }}</h3>
+										</div>
+										<span class="text-right">{{ listing.data.comments }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

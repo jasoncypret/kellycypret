@@ -1,0 +1,13 @@
+<div class="meta mb-3">
+  {% if post.data.date %}
+    <div><a href="#">{{ post.data.date | date("%B %d, %Y") }}</a></div>
+  {% endif %}
+  {% if post.data.author %}
+    <div><a href="#">{{ post.data.author }}</a></div>
+  {% else %}
+    <div><a href="#">Admin</a></div>
+  {% endif %}
+  {# Comment count can be added later if needed #}
+  {# <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div> #}
+</div>
+

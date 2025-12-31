@@ -1,0 +1,22 @@
+---
+title: Blog
+layout: layout.njk
+permalink: /blog/
+showHomeHero: false
+---
+
+{% set breadcrumbs = [{ label: "Blog", url: "/blog/" }] %}
+{% include "blog/post-hero.njk" %}
+
+<section class="ftco-section">
+  <div class="container">
+    <div class="row d-flex">
+      {% set postCount = 0 %}
+      {% for post in collections.blog %}
+        {% set post = post %}
+        {% include "blog/post-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
