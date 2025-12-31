@@ -1,11 +1,12 @@
 ---
 title: Top 5 Tips for First-Time Home Buyers in Ellis County
 date: 2024-02-01
-summary: Essential advice for first-time home buyers navigating the Ellis County real estate market.
-hero_image: /assets/images/about-ext.webp
+summary: Essential advice for first-time home buyers navigating the Ellis County
+  real estate market.
+hero_image: /assets/images/about-int.webp
 author: Kelly Cypret
 tags:
-  - first-time-buyers
+  - first-time-buyerz
   - home-buying
   - ellis-county
 draft: false
