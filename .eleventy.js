@@ -6,12 +6,33 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src-11ty/assets/styles");
   eleventyConfig.addPassthroughCopy("src-11ty/admin");
 
+  // Helper function to normalize tags
+  function normalizeTag(tag) {
+    // Handle object format {tag: "value"} or simple string
+    let tagValue = typeof tag === "string" ? tag : (tag.tag || tag);
+    // Normalize format: lowercase, replace spaces/special chars with dashes
+    tagValue = String(tagValue)
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")  // Replace spaces with dashes
+      .replace(/[^a-z0-9-]/g, "-")  // Replace special chars with dashes
+      .replace(/-+/g, "-")  // Replace multiple dashes with single dash
+      .replace(/^-|-$/g, "");  // Remove leading/trailing dashes
+    return tagValue;
+  }
+
   // Collections
   eleventyConfig.addCollection("blog", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src-11ty/blog/*.md").filter(function(item) {
       // Filter out draft posts in production
       if (process.env.NODE_ENV === "production" && item.data.draft) {
         return false;
+      }
+      // Normalize tags: convert objects to strings and enforce format
+      if (item.data.tags && Array.isArray(item.data.tags)) {
+        item.data.tags = item.data.tags.map(normalizeTag).filter(function(tag) {
+          return tag && tag.length > 0; // Remove empty tags
+        });
       }
       return true;
     }).sort(function(a, b) {
@@ -75,11 +96,13 @@ module.exports = function(eleventyConfig) {
     collectionApi.getFilteredByGlob("src-11ty/blog/*.md").forEach(function(item) {
       if (item.data.tags && Array.isArray(item.data.tags)) {
         item.data.tags.forEach(function(tag) {
-          tags.add(tag);
+          tags.add(normalizeTag(tag));
         });
       }
     });
-    return Array.from(tags).sort();
+    return Array.from(tags).filter(function(tag) {
+      return tag && tag.length > 0; // Remove empty tags
+    }).sort();
   });
 
 

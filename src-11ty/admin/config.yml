@@ -22,6 +22,14 @@ collections:
         widget: list
         required: false
         default: []
+        allow_add: true
+        collapsed: false
+        summary: "{{fields.tag}}"
+        field: 
+          label: Tag
+          name: tag
+          widget: string
+          hint: "Use lowercase with dashes (e.g., 'ellis-county'). Spaces and uppercase will be normalized automatically."
       - {label: Draft, name: draft, widget: boolean, default: false, required: false}
       - {label: Body, name: body, widget: markdown, required: true}
     meta:
