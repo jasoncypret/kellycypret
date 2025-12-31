@@ -33,7 +33,7 @@ collections:
       - {label: Draft, name: draft, widget: boolean, default: false, required: false}
       - {label: Body, name: body, widget: markdown, required: true}
     meta:
-      - {label: Permalink, name: permalink, widget: hidden, default: false}
+      permalink: false
 
   - name: testimonials
     label: Testimonials
@@ -48,7 +48,7 @@ collections:
       - {label: Photo, name: photo, widget: image, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
     meta:
-      - {label: Permalink, name: permalink, widget: hidden, default: false}
+      permalink: false
 
   - name: listings
     label: Featured Listings
@@ -72,4 +72,4 @@ collections:
       - {label: Featured, name: featured, widget: boolean, default: false, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
     meta:
-      - {label: Permalink, name: permalink, widget: hidden, default: false}
+      permalink: false
