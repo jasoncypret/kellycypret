@@ -15,8 +15,8 @@ Mauris vitae gravida nibh. **Integer nec lorem vitae purus vehicula gravida** se
 
 Nulla iaculis odio odio, non porta purus pellentesque non. Integer tortor nisi, gravida at tempor eu, pretium quis velit. Sed tincidunt vulputate ipsum ac ornare. 
 
+![House Yo](/assets/images/about-ext.webp "House")
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio urna, ornare sed mauris a, iaculis consectetur dui. Vivamus ac rutrum mi, in vehicula neque.
-
-
 
 This is awesome!
