@@ -21,11 +21,11 @@ collections:
         name: tags
         widget: list
         required: false
-        fields:
-          - {label: Tag, name: tag, widget: string}
+        default: []
       - {label: Draft, name: draft, widget: boolean, default: false, required: false}
-      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
       - {label: Body, name: body, widget: markdown, required: true}
+    meta:
+      - {label: Permalink, name: permalink, widget: hidden, default: false}
 
   - name: testimonials
     label: Testimonials
@@ -39,7 +39,8 @@ collections:
       - {label: Quote, name: quote, widget: text, required: true}
       - {label: Photo, name: photo, widget: image, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
-      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
+    meta:
+      - {label: Permalink, name: permalink, widget: hidden, default: false}
 
   - name: listings
     label: Featured Listings
@@ -62,5 +63,5 @@ collections:
       - {label: Kelly Comments, name: kelly_comments, widget: string, required: false}
       - {label: Featured, name: featured, widget: boolean, default: false, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
-      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
-
+    meta:
+      - {label: Permalink, name: permalink, widget: hidden, default: false}
