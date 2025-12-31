@@ -1,0 +1,14 @@
+<div class="col-md-3 d-flex ftco-animate">
+  <div class="blog-entry justify-content-end">
+    <div class="text">
+      <a href="/blog/{{ post.fileSlug }}/" class="block-20 img" style="background-image: url('{{ post.data.hero_image or '/assets/images/Kelly-Large.webp' }}');">
+      </a>
+      {% include "blog/post-meta.njk" %}
+      <h3 class="heading"><a href="/blog/{{ post.fileSlug }}/">{{ post.data.title }}</a></h3>
+      {% if post.data.summary %}
+        <p>{{ post.data.summary }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+

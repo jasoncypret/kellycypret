@@ -1,0 +1,82 @@
+<section class="ftco-section ftco-no-pt mt-5 pt-5" id="blog">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">{# Blog &  #}Social</span>
+            <h2>Recent Posts</h2>
+            <div class="row d-flex justify-content-center">
+              {% set postCount = 0 %}
+              {% for post in collections.blog %}
+                {% if postCount < 3 %}
+                  {% set post = post %}
+                  {% include "blog/post-card.njk" %}
+                  {% set postCount = postCount + 1 %}
+                {% endif %}
+              {% endfor %}
+            </div>
+            {# Instagram embed can be added back if needed #}
+            {# <blockquote class="instagram-media mt-5" data-instgrm-permalink="https://www.instagram.com/kellycypretrealestate/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"></blockquote> <script async src="//www.instagram.com/embed.js"></script> #}
+          </div>
+        </div>
+        {# <div class="row d-flex justify-content-center">
+          <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('/assets/images/about-ext.webp');">
+	              </a>
+	              <div class="meta mb-3">
+                  <div><a href="#">June 01, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+	              <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+              </div>
+            </div>
+          </div> #}
+          {# <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('/assets/images/kelly-large.jpg');">
+	              </a>
+	              <div class="meta mb-3">
+                  <div><a href="#">June 01, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+	              <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+              </div>
+            </div>
+          </div> #}
+          {# <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('/assets/images/kelly-large.jpg');">
+	              </a>
+	              <div class="meta mb-3">
+                  <div><a href="#">June 01, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+	              <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+              </div>
+            </div>
+          </div> #}
+          {# <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('/assets/images/kelly-large.jpg');">
+	              </a>
+	              <div class="meta mb-3">
+                  <div><a href="#">June 01, 2020</a></div>
+                  <div><a href="#">Admin</a></div>
+                  <div><a href="#" class="meta-chat"><span class="fa fa-comment"></span> 3</a></div>
+                </div>
+	              <h3 class="heading"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
+              </div>
+            </div>
+          </div> #}
+        </div>
+      </div>
+    </section>
+
+

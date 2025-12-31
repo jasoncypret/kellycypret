@@ -1,0 +1,26 @@
+<div class="row mt-5">
+  <div class="col text-center">
+    <div class="block-27">
+      <ul>
+        {% if pagination.href.previous %}
+          <li><a href="{{ pagination.href.previous }}">&lt;</a></li>
+        {% else %}
+          <li><span>&lt;</span></li>
+        {% endif %}
+        {% for pageEntry in pagination.pages %}
+          {% if pageEntry == pagination.pageNumber %}
+            <li class="active"><span>{{ pageEntry | plus: 1 }}</span></li>
+          {% else %}
+            <li><a href="{{ pagination.hrefs[loop.index0] }}">{{ pageEntry | plus: 1 }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if pagination.href.next %}
+          <li><a href="{{ pagination.href.next }}">&gt;</a></li>
+        {% else %}
+          <li><span>&gt;</span></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
