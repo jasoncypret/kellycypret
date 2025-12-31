@@ -31,9 +31,8 @@ collections:
           widget: string
           hint: "Use lowercase with dashes (e.g., 'ellis-county'). Spaces and uppercase will be normalized automatically."
       - {label: Draft, name: draft, widget: boolean, default: false, required: false}
+      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
       - {label: Body, name: body, widget: markdown, required: true}
-    meta:
-      permalink: false
 
   - name: testimonials
     label: Testimonials
@@ -47,8 +46,7 @@ collections:
       - {label: Quote, name: quote, widget: text, required: true}
       - {label: Photo, name: photo, widget: image, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
-    meta:
-      permalink: false
+      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
 
   - name: listings
     label: Featured Listings
@@ -71,5 +69,4 @@ collections:
       - {label: Kelly Comments, name: kelly_comments, widget: string, required: false}
       - {label: Featured, name: featured, widget: boolean, default: false, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
-    meta:
-      permalink: false
+      - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
