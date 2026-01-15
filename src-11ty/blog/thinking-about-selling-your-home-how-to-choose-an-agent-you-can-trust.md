@@ -3,16 +3,17 @@ title: Thinking About Selling Your Home? How to Choose an Agent You Can Trust
 date: 2026-01-14T21:28:00.000-06:00
 summary: >+
   
-  Selling your home is more than just putting a sign in the yard—it’s about protecting your equity and avoiding costly surprises.** While many agents sound the same, trustworthy agents stand out by clearly explaining pricing, guiding sellers away from unnecessary expenses, preparing them for challenges, and encouraging informed decision-making. The right agent focuses on clarity, communication, and risk management—whether or not you’re ready to sell today.
+  Selling your home is more than just putting a sign in the yard—it’s about protecting your equity and avoiding costly surprises. While many agents sound the same, trustworthy agents stand out by clearly explaining pricing, guiding sellers away from unnecessary expenses, preparing them for challenges, and encouraging informed decision-making. The right agent focuses on clarity, communication, and risk management—whether or not you’re ready to sell today.
 
 hero_image: /assets/images/chatgpt-image-jan-14-2026-09_26_48-pm.png
+author: Kelly
 tags: []
 draft: false
 permalink: false
 ---
 # Thinking About Selling Your Home?
 
-How to Choose an Agent You Can Trust\*\*
+> How to Choose an Agent You Can Trust
 
 If you’re thinking about selling your home, even if it’s months away, you’ve probably realized something uncomfortable: **every real estate agent sounds the same.**
 
