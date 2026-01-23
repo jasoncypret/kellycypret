@@ -1,19 +1,18 @@
 ---
-address: 811 Mallard Pointe Dr
-city: Cedar Hill
+address: 7330 Long Canyon Canyon Trail
+city: Dallas
 state: TX
 status: sold
-hero_image: /assets/images/homes/cedar-hill-mallard-pointe.jpg
+hero_image: /assets/images/longcanyon.jpeg
 external_url: https://www.nrrtsold.com/team/kelly-cypret
-price: $499,900
-old_price: $529,900
-bedrooms: 5 Bedrooms
-bathrooms: 4 Bathrooms
-squarefoot: 3,921
+price: ""
+old_price: ""
+bedrooms: 3 Bedrooms
+bathrooms: 2 Bathrooms
+squarefoot: "2103"
 comments: Last Month
-kelly_comments: What a deal!
+kelly_comments: Sold in 5 days!
 featured: true
 order: 2
 permalink: false
 ---
-
