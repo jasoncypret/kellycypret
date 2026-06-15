@@ -1,78 +1,36 @@
 # Kelly Cypret
-The Middleman Site for kellycypret.com
+
+Kelly Cypret's real estate website — built with [Eleventy](https://www.11ty.dev/) and deployed to Netlify.
 
 ## Getting started
 
-This site runs on asdf. Make sure you have that installed with ruby and run:
+This project uses Node.js managed by [asdf](https://asdf-vm.com/). Install the correct version and dependencies:
 
 ```sh
 asdf install
-```
-
-Once run you can bundle like normal.
-
-```sh
-bundle install
-```
-
-## Middleman (Legacy)
-
-### Build the site
-
-```sh
-bundle exec middleman server
-```
-
-### Test Build before Publishing to GitHub Pages
-
-```sh
-bundle exec rake build # Compile all files into the build directory
-```
-
-### Publish to GitHub Pages
-
-Clear build folder before this step
-
-```sh
-bundle exec rake publish ALLOW_DIRTY=true # Build and publish to Github Pages
-```
-
-## Eleventy (New Implementation)
-
-### Prerequisites
-
-This project uses yarn managed by asdf. Ensure you have yarn installed:
-
-```sh
-asdf plugin add yarn
-asdf install yarn latest
-asdf local yarn <version>
-```
-
-### Getting started
-
-Install dependencies:
-
-```sh
 yarn install
 ```
 
-### Development
+## Development
 
-Start the Eleventy development server:
+Start the local dev server (available at `http://localhost:8080/`):
 
 ```sh
 yarn dev
 ```
 
-The site will be available at `http://localhost:8080/`
+## Build
 
-### Build
-
-Build the site for production:
+Build for production (output goes to `_site/`):
 
 ```sh
 yarn build
 ```
 
-The output will be in the `_site/` directory.
+Netlify runs `yarn build` automatically on deploy.
+
+---
+
+## Legacy: Middleman
+
+The original site used Middleman (Ruby). Those files still exist (`Gemfile`, `Rakefile`, `source/`, `build/`) but are no longer used. The Eleventy implementation in `src-11ty/` is the active codebase.
