@@ -1,11 +1,8 @@
 ---
-name: Lexa Abrego
-city: Waxahachie
+name: Alton Dixon
+subtext: "Buyer · Ennis, TX"
 role: buyer
-quote: Kelly made our home buying experience seamless! Her knowledge of Ellis
-  County helped us find the perfect neighborhood for our family. We couldn't be
-  happier!
-photo: /assets/images/kelly-thumb.jpg
+quote: "Buying a home is never a simple journey, and mine came with its fair share of challenges. Through it all, Kelly remained the definition of professionalism, patience, and dedication. She was consistently courteous, incredibly knowledgeable, and always took the time to make sure I felt confident and supported every step of the way."
 order: 1
 permalink: false
 ---

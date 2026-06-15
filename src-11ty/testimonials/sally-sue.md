@@ -1,11 +1,8 @@
 ---
-name: Taylor Thompson
-city: Ellis County
-role: seller
-quote: Kelly's expertise and attention to detail made selling our home a breeze.
-  She went above and beyond to ensure a smooth transaction, and we're grateful
-  for her support throughout the process.
-photo: /assets/images/kelly-thumb.jpg
+name: Rami Addicks
+subtext: "Buyer & Seller · Mansfield, TX"
+role: buyer
+quote: "Working with Kelly is like working with a great family friend. She's always looking to help make the process as smooth as possible and to make sure your needs and wants are met! She was exceptional in handling our sale and our purchase of another home. Always attentive, responsive, and dedicated."
 order: 3
 permalink: false
 ---

@@ -41,10 +41,9 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: Name, name: name, widget: string, required: true}
-      - {label: City, name: city, widget: string, required: true}
-      - {label: Role, name: role, widget: select, options: [buyer, seller], required: true}
+      - {label: Subtext, name: subtext, widget: string, required: false, hint: "Shown below the name, e.g. 'Buyer · Ennis, TX'"}
+      - {label: Role, name: role, widget: select, options: [buyer, seller], required: false}
       - {label: Quote, name: quote, widget: text, required: true}
-      - {label: Photo, name: photo, widget: image, required: false}
       - {label: Order, name: order, widget: number, required: false, value_type: int}
       - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
 

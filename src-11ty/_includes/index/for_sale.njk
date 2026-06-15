@@ -22,14 +22,14 @@
 									<div class="rent-sale">
 										<span class="sale">{{ listing.data.status }}</span>
 									</div>
+									{% if listing.data.price %}
 									<p class="price">
-										<!-- IF OLD PRICE -->
 										{% if listing.data.old_price %}
 											<span class="old-price">{{ listing.data.old_price }}</span>
 										{% endif %}
-										<!-- IF OLD PRICE -->
 										<span class="orig-price">{{ listing.data.price }}</span>
 									</p>
+									{% endif %}
 								</a>
 								<div class="text">
 									<ul class="property_list">
@@ -44,7 +44,7 @@
 									</a>
 									<div class="list-team d-flex align-items-center mt-2 pt-2 border-top">
 										<div class="d-flex align-items-center">
-											<div class="img" style="background-image: url(/assets/images/kelly-thumb.jpg);"></div>
+											<div class="img flex-shrink-0" style="background-image: url(/assets/images/kelly-thumb.jpg);"></div>
 											<h3 class="ml-2">{{ listing.data.kelly_comments }}</h3>
 										</div>
 										<span class="text-right">{{ listing.data.comments }}</span>
