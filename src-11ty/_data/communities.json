@@ -1,0 +1,19 @@
+[
+  { "name": "Waxahachie", "slug": "waxahachie-TX", "tagline": "Vibrant Community", "image": "/assets/images/communities/waxahachie.webp", "featured": true },
+  { "name": "Midlothian", "slug": "midlothian-TX", "tagline": "Family-Friendly", "image": "/assets/images/communities/midlothian.webp", "featured": true },
+  { "name": "Maypearl", "slug": "", "tagline": "Open Spaces", "image": "/assets/images/communities/maypearl.webp", "featured": true },
+  { "name": "Mansfield", "slug": "mansfield-TX" },
+  { "name": "Grand Prairie", "slug": "grand-prairie-TX" },
+  { "name": "Cedar Hill", "slug": "cedar-hill-TX" },
+  { "name": "Red Oak", "slug": "red-oak-TX" },
+  { "name": "Palmer", "slug": "palmer-TX" },
+  { "name": "Ennis", "slug": "ennis-TX" },
+  { "name": "Grandview", "slug": "grandview-TX" },
+  { "name": "Ferris", "slug": "ferris-TX" },
+  { "name": "Glenn Heights", "slug": "glenn-heights-TX" },
+  { "name": "Ovilla", "slug": "ovilla-TX" },
+  { "name": "Itasca", "slug": "itasca-TX" },
+  { "name": "Milford", "slug": "milford-TX" },
+  { "name": "Alvarado", "slug": "alvarado-TX" },
+  { "name": "Venus", "slug": "venus-TX" }
+]

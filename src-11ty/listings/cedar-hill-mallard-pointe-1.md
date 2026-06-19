@@ -4,7 +4,7 @@ city: Mansfield
 state: TX
 status: active
 hero_image: /assets/images/01-1105-meadow-crest-ln-final-1.jpg
-external_url: https://www.nrrtsold.com/team/kelly-cypret
+external_url: https://nrrtsold.com/agents/Kelly-Cypret/8932523
 price: $370,000
 old_price: ""
 bedrooms: 3 Bedrooms

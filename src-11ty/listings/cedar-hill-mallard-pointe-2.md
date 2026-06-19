@@ -4,7 +4,7 @@ city: Dallas
 state: TX
 status: sold
 hero_image: /assets/images/longcanyon.jpeg
-external_url: https://www.nrrtsold.com/team/kelly-cypret
+external_url: https://nrrtsold.com/agents/Kelly-Cypret/8932523
 price: ""
 old_price: ""
 bedrooms: 3 Bedrooms

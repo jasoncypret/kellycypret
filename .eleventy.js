@@ -82,6 +82,42 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Build a Kelly Lofty community landing page URL
+  eleventyConfig.addFilter("communityPageUrl", function(community) {
+    const base = "https://kelly.nrrtsold.com";
+    const slug = typeof community === "string" ? community : community.slug;
+    if (slug) return base + "/" + slug;
+    const name = typeof community === "string" ? community : community.name;
+    if (!name) return base + "/listing";
+    const condition = JSON.stringify({
+      location: { city: [name.includes(", TX") ? name : name + ", TX"] }
+    });
+    const params = new URLSearchParams({
+      listingSource: "all listings",
+      condition: condition,
+      uiConfig: "{}",
+      zoom: "9",
+      page: "1"
+    });
+    return base + "/listing?" + params.toString();
+  });
+
+  // Build a Kelly Lofty listing search URL filtered by city
+  eleventyConfig.addFilter("listingCityUrl", function(city) {
+    if (!city) return "https://kelly.nrrtsold.com/listing";
+    const condition = JSON.stringify({
+      location: { city: [city.includes(", TX") ? city : city + ", TX"] }
+    });
+    const params = new URLSearchParams({
+      listingSource: "all listings",
+      condition: condition,
+      uiConfig: "{}",
+      zoom: "9",
+      page: "1"
+    });
+    return "https://kelly.nrrtsold.com/listing?" + params.toString();
+  });
+
   // Format tag title (replace hyphens with spaces and capitalize)
   eleventyConfig.addFilter("tagTitle", function(tag) {
     if (!tag) return "";

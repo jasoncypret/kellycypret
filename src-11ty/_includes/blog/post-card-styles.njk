@@ -1,0 +1,11 @@
+<style>
+/* Clamp blog card summaries to 4 lines in row layout; full text when stacked */
+@media (min-width: 768px) {
+  .blog-card-summary {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+}
+</style>

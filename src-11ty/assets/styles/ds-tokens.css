@@ -1,0 +1,124 @@
+/* Kelly Cypret Design System — merged token layer */
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap");
+
+:root {
+  /* --- Brand palette --- */
+  --kc-olive: #80745b;
+  --kc-olive-dark: #6b6049;
+  --kc-olive-deep: #5d543f;
+  --kc-walnut: #5c4f3e;
+  --kc-cream: #f2ede6;
+  --kc-cream-dark: #e6ddcf;
+  --kc-gold: #fff5c0;
+  --kc-ink: #1a1a1a;
+  --kc-ink-soft: #212529;
+  --kc-coral: #e16262;
+  --kc-white: #ffffff;
+
+  /* --- Neutral ramp --- */
+  --kc-gray-900: #2b2b2b;
+  --kc-gray-700: #4d4d4d;
+  --kc-gray-600: #666666;
+  --kc-gray-500: #8a8a8a;
+  --kc-gray-400: #b3b3b3;
+  --kc-gray-300: #d8d2c8;
+  --kc-gray-200: #e8e2d9;
+  --kc-gray-100: #f7f4ef;
+
+  /* --- Surfaces --- */
+  --surface-page: var(--kc-white);
+  --surface-cream: var(--kc-cream);
+  --surface-faint: var(--kc-gray-100);
+  --surface-olive: var(--kc-olive);
+  --surface-dark: var(--kc-ink);
+  --surface-card: var(--kc-white);
+
+  /* --- Text --- */
+  --text-heading: rgba(0,0,0,0.82);
+  --text-body: var(--kc-gray-600);
+  --text-muted: var(--kc-gray-500);
+  --text-on-dark: var(--kc-white);
+  --text-on-dark-dim: rgba(255,255,255,0.78);
+  --text-on-olive: var(--kc-white);
+  --text-price: var(--kc-walnut);
+
+  /* --- Brand / interactive --- */
+  --brand-primary: var(--kc-olive);
+  --brand-primary-hover: var(--kc-olive-dark);
+  --brand-accent: var(--kc-walnut);
+  --brand-gold: var(--kc-gold);
+  --eyebrow: var(--kc-olive);
+
+  /* --- States --- */
+  --state-sale: var(--kc-coral);
+  --state-sold: var(--kc-olive);
+
+  /* --- Lines --- */
+  --border-subtle: var(--kc-gray-200);
+  --border-hairline: rgba(0,0,0,0.08);
+  --overlay-hero: rgba(0,0,0,0.5);
+  --overlay-hero-strong: rgba(0,0,0,0.78);
+
+  /* --- Typography --- */
+  --font-serif: "Sedan", "Georgia", "Times New Roman", serif;
+  --font-sans: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 800;
+  --text-display: 60px;
+  --text-h1: 40px;
+  --text-h2: 32px;
+  --text-h3: 24px;
+  --text-h4: 20px;
+  --text-h5: 18px;
+  --text-base: 16px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+  --leading-display: 1.1;
+  --leading-heading: 1.25;
+  --leading-snug: 1.5;
+  --leading-body: 1.8;
+  --tracking-eyebrow: 2px;
+  --tracking-button: 1px;
+  --tracking-tight: -0.01em;
+
+  /* --- Spacing --- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-section: 112px;
+
+  /* --- Radii --- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  /* --- Shadows --- */
+  --shadow-card: 0px 5px 21px -14px rgba(0,0,0,0.14);
+  --shadow-card-hover: 0px 5px 39px -14px rgba(0,0,0,0.26);
+  --shadow-soft: 0px 10px 34px -20px rgba(0,0,0,0.41);
+  --shadow-pop: 0 18px 50px -24px rgba(46,40,28,0.45);
+
+  /* --- Layout --- */
+  --container-max: 1250px;
+  --container-pad: 24px;
+
+  /* --- Motion --- */
+  --ease-standard: cubic-bezier(0.25,0.46,0.45,0.94);
+  --transition-base: 0.3s ease;
+}

@@ -4,7 +4,7 @@ city: Ennis
 state: TX
 status: sold
 hero_image: /assets/images/getmedia-1-.jpeg
-external_url: https://www.nrrtsold.com/team/kelly-cypret
+external_url: https://nrrtsold.com/agents/Kelly-Cypret/8932523
 price: 382,000
 bedrooms: "3"
 bathrooms: "2"

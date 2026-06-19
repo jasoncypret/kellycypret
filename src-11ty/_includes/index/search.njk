@@ -1,79 +1,134 @@
 <section class="ftco-section ftco-no-pb ftco-no-pt">
-    	<div class="container">
-	    	<div class="row">
-					<div class="col-md-12">
-						<div class="search-wrap-1 ftco-animate p-4">
-							<form action="#" class="search-property-1">
-		        		<div class="row">
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Keyword</label>
-		          				<div class="form-field">
-		          					<div class="icon"><span class="fa fa-search"></span></div>
-				                <input type="text" class="form-control" placeholder="Enter Keyword">
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Property Type</label>
-		        					<div class="form-field">
-		          					<div class="select-wrap">
-		                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-		                      <select name="" id="" class="form-control">
-		                        <option value="">Residence</option>
-		                        <option value="">Offices</option>
-		                        <option value="">Commercial</option>
-		                      </select>
-		                    </div>
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Location</label>
-		          				<div class="form-field">
-		          					<div class="icon"><span class="fa fa-search"></span></div>
-				                <input type="text" class="form-control" placeholder="Location">
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-items-end">
-		        				<div class="form-group">
-		        					<label for="#">Price Limit</label>
-		        					<div class="form-field">
-		          					<div class="select-wrap">
-		                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-		                      <select name="" id="" class="form-control">
-		                        <option value="">$100,000</option>
-		                        <option value="">$200,000</option>
-		                        <option value="">$300,000</option>
-		                        <option value="">$400,000</option>
-		                        <option value="">$500,000</option>
-		                        <option value="">$600,000</option>
-		                        <option value="">$700,000</option>
-		                        <option value="">$800,000</option>
-		                        <option value="">$900,000</option>
-		                        <option value="">$1,000,000</option>
-		                        <option value="">$2,000,000</option>
-		                      </select>
-		                    </div>
-				              </div>
-			              </div>
-		        			</div>
-		        			<div class="col-lg align-self-end">
-		        				<div class="form-group">
-		        					<div class="form-field">
-				                <a class="form-control btn btn-primary" href="https://kelly.nrrtsold.com/search/">Search</a>
-				              </div>
-			              </div>
-		        			</div>
-		        		</div>
-		        	</form>
-		        </div>
-					</div>
-	    	</div>
-	    </div>
-    </section>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="search-wrap-1 ftco-animate p-4">
+					<form id="kelly-listing-search" class="search-property-1" action="{{ links.listingSearch }}" method="get">
+						<div class="row">
+							<div class="col-lg align-items-end">
+								<div class="form-group">
+									<label for="search-location">Location</label>
+									<div class="form-field">
+										<div class="icon"><span class="fa fa-search"></span></div>
+										<input type="text" id="search-location" name="location" class="form-control" placeholder="City, address, or ZIP">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg align-items-end">
+								<div class="form-group">
+									<label for="search-community">Community</label>
+									<div class="form-field">
+										<div class="select-wrap">
+											<div class="icon"><span class="fa fa-chevron-down"></span></div>
+											<select id="search-community" name="community" class="form-control">
+												<option value="">Any Community</option>
+												{% for community in communities %}
+												{% if community.slug or community.featured %}
+												<option value="{{ community.name }}">{{ community.name }}</option>
+												{% endif %}
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg align-items-end">
+								<div class="form-group">
+									<label for="search-price">Price</label>
+									<div class="form-field">
+										<div class="select-wrap">
+											<div class="icon"><span class="fa fa-chevron-down"></span></div>
+											<select id="search-price" name="priceMax" class="form-control">
+												<option value="">Any Price</option>
+												<option value="200000">Up to $200,000</option>
+												<option value="300000">Up to $300,000</option>
+												<option value="400000">Up to $400,000</option>
+												<option value="500000">Up to $500,000</option>
+												<option value="600000">Up to $600,000</option>
+												<option value="700000">Up to $700,000</option>
+												<option value="800000">Up to $800,000</option>
+												<option value="1000000">Up to $1,000,000</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg align-items-end">
+								<div class="form-group">
+									<label for="search-beds">Beds</label>
+									<div class="form-field">
+										<div class="select-wrap">
+											<div class="icon"><span class="fa fa-chevron-down"></span></div>
+											<select id="search-beds" name="beds" class="form-control">
+												<option value="">Any</option>
+												<option value="1">1+</option>
+												<option value="2">2+</option>
+												<option value="3">3+</option>
+												<option value="4">4+</option>
+												<option value="5">5+</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg align-self-end">
+								<div class="form-group">
+									<div class="form-field">
+										<button type="submit" class="form-control btn btn-primary">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
+<script>
+(function () {
+  var form = document.getElementById('kelly-listing-search');
+  if (!form) return;
 
+  var LISTING_BASE = {{ links.listingSearch | dump | safe }};
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var location = document.getElementById('search-location').value.trim();
+    var community = document.getElementById('search-community').value;
+    var priceMax = document.getElementById('search-price').value;
+    var beds = document.getElementById('search-beds').value;
+    var condition = {};
+
+    var city = community || location;
+    if (city) {
+      condition.location = {
+        city: [city.indexOf(', TX') !== -1 ? city : city + ', TX']
+      };
+    }
+
+    if (priceMax) {
+      condition.price = ',' + priceMax;
+    }
+
+    if (beds) {
+      condition.beds = beds + ',';
+    }
+
+    var params = new URLSearchParams({
+      listingSource: 'all listings',
+      uiConfig: '{}',
+      zoom: '9',
+      page: '1'
+    });
+
+    if (Object.keys(condition).length) {
+      params.set('condition', JSON.stringify(condition));
+    }
+
+    window.location.href = LISTING_BASE + '?' + params.toString();
+  });
+})();
+</script>

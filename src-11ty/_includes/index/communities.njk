@@ -1,58 +1,79 @@
-<section class="ftco-section ftco-no-pt pt-5">
-    	<div class="container">
-    		<div class="row justify-content-center">
-          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
-          	<span class="subheading">Communities</span>
-            <h2 class="mb-2">Explore Ellis County</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-4">
-    				<a href="https://kelly.nrrtsold.com/search?s%5Blocations%5D%5B0%5D%5BpostalCode%5D=75165" class="search-place img" style="background-image: url(/assets/images/communities/waxahachie.webp);">
-							<div class="desc">
-								<h3><span>Waxahachie</span></h3>
-								<span>Vibrant Community</span>
-							</div>
-    				</a>
-    			</div>
-    			<div class="col-md-4">
-    				<a href="https://kelly.nrrtsold.com/search?s%5Blocations%5D%5B0%5D%5BpostalCode%5D=76065" class="search-place img" style="background-image: url(/assets/images/communities/midlothian.webp);">
-							<div class="desc">
-								<h3><span>Midlothian</span></h3>
-								<span>Family-Friendly</span>
-							</div>
-    				</a>
-    			</div>
-    			<div class="col-md-4">
-    				<a href="https://kelly.nrrtsold.com/search?s%5Blocations%5D%5B0%5D%5BpostalCode%5D=76064" class="search-place img" style="background-image: url(/assets/images/communities/maypearl.webp);">
-							<div class="desc">
-								<h3><span>Maypearl</span></h3>
-								<span>Open Spaces</span>
-							</div>
-    				</a>
-    			</div>
-    		</div>
-    	</div>
-    </section>
+<section class="ftco-section ftco-no-pt pt-5" id="communities">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 heading-section text-center ftco-animate mb-5">
+				<span class="subheading">Communities</span>
+				<h2 class="mb-2">Explore Ellis County</h2>
+			</div>
+		</div>
 
-{# Ellis County
-Waxahachie
-Midlothian
-Maypearl
-Red Oak
-Grandview
-Palmer
-Ennis
-Ferris
-Glenn Heights
-Grand Prairie
-Italy
-Ovilla
-Milford
-Venus
-Itasca
-Alvarado
-Mansfield 
-Cedar Hill #}
+		{# Featured communities with photos #}
+		<div class="row">
+			{% for community in communities %}
+			{% if community.featured and community.image %}
+			<div class="col-md-4">
+				<a href="{{ community | communityPageUrl }}" class="search-place img" style="background-image: url({{ community.image }});">
+					<div class="desc">
+						<h3><span>{{ community.name }}</span></h3>
+						<span>{{ community.tagline }}</span>
+					</div>
+				</a>
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
 
+		{# Flat text links — all Lofty community pages #}
+		<div class="row justify-content-center mt-5 pt-4">
+			<div class="col-lg-8 text-center ftco-animate mb-4">
+				<h3 class="mb-1" style="font-family: 'Sedan', Georgia, serif; font-size: 28px; font-weight: 400;">Explore More of Ellis County</h3>
+				<p class="mb-0" style="color: #666; font-size: 15px;">Browse homes for sale in every community Kelly serves.</p>
+			</div>
+		</div>
+		<div class="row community-link-grid ftco-animate">
+			{% set listed = communities | selectattr("slug") | rejectattr("featured") | list %}
+			{% set half = (listed.length / 2) | round(0, "ceil") %}
+			<div class="col-md-6">
+				<ul class="community-links list-unstyled">
+					{% for community in listed %}
+					{% if loop.index0 < half %}
+					<li><a href="{{ community | communityPageUrl }}">{{ community.name }}</a></li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="col-md-6">
+				<ul class="community-links list-unstyled">
+					{% for community in listed %}
+					{% if loop.index0 >= half %}
+					<li><a href="{{ community | communityPageUrl }}">{{ community.name }}</a></li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
 
+<style>
+  .community-links { margin: 0; padding: 0; }
+  .community-links li { border-bottom: 1px solid rgba(0,0,0,.07); }
+  .community-links a {
+    display: block;
+    padding: 12px 4px;
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(0,0,0,.78);
+    transition: color .2s ease, padding-left .2s ease;
+  }
+  .community-links a:hover {
+    color: #80745b;
+    padding-left: 8px;
+    text-decoration: none;
+  }
+  @media (max-width: 767px) {
+    .community-link-grid .col-md-6 + .col-md-6 { margin-top: 0; }
+    .community-link-grid .col-md-6 + .col-md-6 .community-links li:first-child { border-top: none; }
+  }
+</style>

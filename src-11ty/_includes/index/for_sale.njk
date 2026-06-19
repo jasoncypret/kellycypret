@@ -1,61 +1,318 @@
-<section class="ftco-section" id="properties">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-12 heading-section text-center ftco-animate mb-5">
-				<span class="subheading">Properties</span>
-				<h2 class="mb-2">For Sale</h2>
-			</div>
-		</div>
-		<div class="row ftco-animate">
-			<div class="col-md-12">
-				{% set featuredListings = [] %}
-				{% for listing in collections.listings %}
-					{% if listing.data.featured %}
-						{% set featuredListings = (featuredListings.push(listing), featuredListings) %}
-					{% endif %}
-				{% endfor %}
-				<div class="{% if featuredListings.length > 1 %}carousel-properties owl-carousel{% endif %}">
-					{% for listing in featuredListings %}
-						<div class="item">
-							<div class="property-wrap ftco-animate">
-								<a href="{{ listing.data.external_url }}" class="img" style="background-image: url({{ listing.data.hero_image }});">
-									<div class="rent-sale">
-										<span class="sale">{{ listing.data.status }}</span>
-									</div>
-									{% if listing.data.price %}
-									<p class="price">
-										{% if listing.data.old_price %}
-											<span class="old-price">{{ listing.data.old_price }}</span>
-										{% endif %}
-										<span class="orig-price">{{ listing.data.price }}</span>
-									</p>
-									{% endif %}
-								</a>
-								<div class="text">
-									<ul class="property_list">
-										<li><span class="fi flaticon-bed"></span>{{ listing.data.bedrooms }}</li>
-										<li><span class="fi flaticon-bathtub"></span>{{ listing.data.bathrooms }}</li>
-										<li><span class="fi flaticon-floor-plan"></span>{{ listing.data.squarefoot }}</li>
-									</ul>
-									<h3><a href="{{ listing.data.external_url }}">{{ listing.data.address }}</a></h3>
-									<span class="location">{{ listing.data.city }}, {{ listing.data.state }}</span>
-									<a href="{{ listing.data.external_url }}" class="d-flex align-items-center justify-content-center btn-custom">
-										<span class="fa fa-link"></span>
-									</a>
-									<div class="list-team d-flex align-items-center mt-2 pt-2 border-top">
-										<div class="d-flex align-items-center">
-											<div class="img flex-shrink-0" style="background-image: url(/assets/images/kelly-thumb.jpg);"></div>
-											<h3 class="ml-2">{{ listing.data.kelly_comments }}</h3>
-										</div>
-										<span class="text-right">{{ listing.data.comments }}</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+<style>
+/* ── Homepage listing cards ──────────────────────────────────────────────── */
+.lc-section { padding: 80px 0; }
+.lc-container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.lc-eyebrow {
+  display: block; text-align: center;
+  font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: #80745b; margin-bottom: 8px;
+}
+.lc-title {
+  font-family: "Sedan", "Georgia", serif; font-size: 36px; font-weight: 400;
+  text-align: center; margin: 0 0 36px; color: rgba(0,0,0,.82);
+}
 
+/* ── Featured card (1 active listing) ───────────────────────────────────── */
+.lc-featured {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: #fff; border-top: 3px solid #E16262;
+  box-shadow: 0 6px 32px -8px rgba(225,98,98,.18);
+  transition: box-shadow .3s ease; text-decoration: none; color: inherit;
+}
+.lc-featured:hover { box-shadow: 0 16px 56px -12px rgba(225,98,98,.3); }
+.lc-featured-media { position: relative; min-height: 320px; overflow: hidden; }
+.lc-featured-media > img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .6s ease; position: absolute; inset: 0;
+}
+.lc-featured:hover .lc-featured-media > img { transform: scale(1.04); }
+
+/* Portrait video (9:16 Shorts) scaled to cover the landscape media panel */
+.lc-vid-cover {
+  position: absolute; inset: 0; overflow: hidden; background: #14120d;
+}
+.lc-vid-cover iframe {
+  position: absolute;
+  width: 100%;
+  height: 350%; /* covers typical landscape container with 9:16 portrait video */
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  border: 0; pointer-events: none;
+}
+
+.lc-featured-badge {
+  position: absolute; top: 14px; left: 18px; z-index: 2;
+  background: #E16262; color: #fff;
+  font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 700;
+  padding: 5px 11px; border-radius: 4px;
+}
+.lc-featured-body { padding: 40px 44px; display: flex; flex-direction: column; justify-content: center; }
+.lc-featured-body h3 {
+  font-family: "Sedan", "Georgia", serif; font-size: 28px; font-weight: 400;
+  margin: 0 0 4px; color: rgba(0,0,0,.82);
+}
+.lc-featured-city { font-size: 13.5px; color: #8a8a8a; margin: 0 0 14px; }
+.lc-featured-price {
+  font-family: "Sedan", "Georgia", serif; font-size: 34px;
+  color: #5c4f3e; margin: 0 0 16px; line-height: 1;
+}
+.lc-specs { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0 0 24px; font-size: 14px; color: #666; }
+.lc-specs li { display: flex; align-items: center; gap: 6px; }
+.lc-specs .fa { color: #80745b; }
+.lc-view-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 1.4px; text-transform: uppercase; color: #E16262; text-decoration: none;
+}
+
+/* ── 3-col card grid (2+ active listings) ───────────────────────────────── */
+.lc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+
+/* ── Standard card ──────────────────────────────────────────────────────── */
+.lc-card {
+  display: block; text-decoration: none; color: inherit;
+  background: #fff; transition: box-shadow .3s ease;
+}
+.lc-card.lc-active {
+  border-top: 3px solid #E16262;
+  box-shadow: 0 6px 32px -8px rgba(225,98,98,.18);
+}
+.lc-card.lc-sold {
+  border-top: 3px solid transparent;
+  box-shadow: 0 5px 21px -14px rgba(0,0,0,.14);
+  opacity: .72; cursor: default;
+}
+.lc-card.lc-active:hover { box-shadow: 0 12px 48px -10px rgba(225,98,98,.28); }
+.lc-card.lc-sold:hover   { box-shadow: 0 5px 39px -14px rgba(0,0,0,.26); }
+
+.lc-card-photo { position: relative; height: 210px; overflow: hidden; }
+.lc-card-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .5s ease;
+}
+.lc-card.lc-active:hover .lc-card-photo img { transform: scale(1.04); }
+
+.lc-badge-sale { position: absolute; top: 12px; left: 16px; background: #E16262; color: #fff; font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+.lc-badge-sold { position: absolute; top: 12px; left: 16px; background: #eeeae4; color: #9a9183; border: 1px solid #d9d4cc; font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; }
+.lc-card-price { position: absolute; bottom: 12px; left: 16px; background: rgba(255,255,255,.88); border-radius: 4px; padding: 4px 10px; font-family: "Nunito Sans", sans-serif; font-size: 14px; font-weight: 700; color: #5c4f3e; }
+
+.lc-card-body { padding: 20px 22px 18px; }
+.lc-card-specs { list-style: none; display: flex; gap: 14px; padding: 0; margin: 0 0 8px; font-size: 13.5px; color: #666; }
+.lc-card-specs li { display: flex; align-items: center; gap: 5px; }
+.lc-card-specs .fa { color: #80745b; font-size: 12px; }
+.lc-card-address { font-family: "Nunito Sans", sans-serif; font-size: 15.5px; font-weight: 700; margin: 0 0 2px; color: rgba(0,0,0,.82); }
+.lc-card-city { font-size: 12.5px; color: #8a8a8a; margin: 0; }
+.lc-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(0,0,0,.08);
+}
+.lc-agent { display: flex; gap: 7px; align-items: center; }
+.lc-agent-thumb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: url(/assets/images/kelly-thumb.jpg) center/cover;
+  flex: none; display: inline-block;
+}
+.lc-card.lc-sold .lc-agent-thumb { opacity: .6; }
+.lc-agent-note { font-family: "Nunito Sans", sans-serif; font-size: 12px; font-weight: 600; color: #80745b; }
+.lc-card.lc-sold .lc-agent-note { color: rgba(0,0,0,.4); }
+.lc-card-cta {
+  font-family: "Nunito Sans", sans-serif; font-size: 11.5px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase; color: #E16262;
+  display: flex; align-items: center; gap: 5px;
+}
+.lc-card-meta { font-family: "Nunito Sans", sans-serif; font-size: 12px; color: rgba(0,0,0,.4); }
+
+/* ── Recent closings divider ────────────────────────────────────────────── */
+.lc-divider { display: flex; align-items: center; gap: 16px; margin: 36px 0 24px; }
+.lc-divider-line { flex: 1; height: 1px; background: #e8e2d9; }
+.lc-divider-label {
+  font-family: "Nunito Sans", sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: #8a8a8a; white-space: nowrap;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .lc-featured { grid-template-columns: 1fr; }
+  .lc-featured-media { min-height: 260px; }
+  .lc-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .lc-grid { grid-template-columns: 1fr; }
+  .lc-featured-body { padding: 28px 24px; }
+}
+</style>
+
+{# ── Separate featured listings into active vs sold ── #}
+{% set activeListings = [] %}
+{% set soldListings = [] %}
+{% for listing in collections.listings %}
+  {% if listing.data.featured %}
+    {% if listing.data.status == 'active' or listing.data.status == 'pending' %}
+      {% set activeListings = (activeListings.push(listing), activeListings) %}
+    {% else %}
+      {% set soldListings = (soldListings.push(listing), soldListings) %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<section class="lc-section" id="properties">
+  <div class="lc-container">
+
+    <span class="lc-eyebrow">Properties</span>
+    <h2 class="lc-title">For Sale</h2>
+
+    {# ════════════════════════════════════════════════════════════════════
+       LAYOUT A — one active listing: wide featured card + sold archive
+       ═══════════════════════════════════════════════════════════════════ #}
+    {% if activeListings | length == 1 %}
+      {% set f = activeListings[0].data %}
+      {% set fBeds   = f.beds or f.bedrooms %}
+      {% set fBaths  = f.baths or f.bathrooms %}
+      {% set fSqft   = f.sqft or f.squarefoot %}
+      {% set fUrl    = f.listing_url %}
+
+      <a class="lc-featured" href="{{ fUrl }}">
+        <div class="lc-featured-media">
+          {% if f.video_id %}
+            {# Video reel as featured image — muted autoplay, no controls, cover-cropped #}
+            <div class="lc-vid-cover">
+              <iframe
+                src="https://www.youtube.com/embed/{{ f.video_id }}?autoplay=1&mute=1&controls=0&loop=1&playlist={{ f.video_id }}&playsinline=1&rel=0&modestbranding=1"
+                title="Video tour — {{ f.address }}"
+                allow="autoplay; encrypted-media"
+                loading="lazy"></iframe>
+            </div>
+          {% else %}
+            <img src="{{ f.hero_image }}" alt="{{ f.address }}">
+          {% endif %}
+          <span class="lc-featured-badge">For Sale · Just Listed</span>
+        </div>
+        <div class="lc-featured-body">
+          <h3>{{ f.address }}</h3>
+          <p class="lc-featured-city">{{ f.city }}, {{ f.state }}</p>
+          {% if f.price %}<p class="lc-featured-price">{{ f.price }}</p>{% endif %}
+          <ul class="lc-specs">
+            {% if fBeds %}<li><span class="fa fa-bed"></span>{{ fBeds }}</li>{% endif %}
+            {% if fBaths %}<li><span class="fa fa-bath"></span>{{ fBaths }}</li>{% endif %}
+            {% if fSqft %}<li><span class="fa fa-arrows-alt"></span>{{ fSqft }}</li>{% endif %}
+          </ul>
+          <span class="lc-view-cta">
+            View Listing <span class="fa fa-chevron-right" style="font-size:10px;"></span>
+          </span>
+        </div>
+      </a>
+
+      {# Recent closings below the featured card #}
+      {% if soldListings | length > 0 %}
+        <div class="lc-divider">
+          <div class="lc-divider-line"></div>
+          <span class="lc-divider-label">Recent Closings</span>
+          <div class="lc-divider-line"></div>
+        </div>
+        <div class="lc-grid">
+          {% for listing in soldListings %}
+            {% set l = listing.data %}
+            {% set lBeds  = l.beds or l.bedrooms %}
+            {% set lBaths = l.baths or l.bathrooms %}
+            {% set lSqft  = l.sqft or l.squarefoot %}
+            <div class="lc-card lc-sold">
+              <div class="lc-card-photo">
+                <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
+                <span class="lc-badge-sold">Sold</span>
+                {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
+              </div>
+              <div class="lc-card-body">
+                <ul class="lc-card-specs">
+                  {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
+                  {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
+                  {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
+                </ul>
+                <p class="lc-card-address">{{ l.address }}</p>
+                <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
+                <div class="lc-card-footer">
+                  <span class="lc-agent">
+                    <span class="lc-agent-thumb"></span>
+                    <span class="lc-agent-note">{{ l.kelly_comments or "Closed!" }}</span>
+                  </span>
+                  <span class="lc-card-meta">{{ l.comments }}</span>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+    {# ════════════════════════════════════════════════════════════════════
+       LAYOUT B — two or more active listings: 3-col grid, sold de-emphasized
+       ═══════════════════════════════════════════════════════════════════ #}
+    {% else %}
+      <div class="lc-grid">
+        {# Active listings first #}
+        {% for listing in activeListings %}
+          {% set l = listing.data %}
+          {% set lBeds  = l.beds or l.bedrooms %}
+          {% set lBaths = l.baths or l.bathrooms %}
+          {% set lSqft  = l.sqft or l.squarefoot %}
+          {% set lUrl   = l.listing_url %}
+          <a class="lc-card lc-active" href="{{ lUrl }}">
+            <div class="lc-card-photo">
+              <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
+              <span class="lc-badge-sale">For Sale</span>
+              {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
+            </div>
+            <div class="lc-card-body">
+              <ul class="lc-card-specs">
+                {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
+                {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
+                {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
+              </ul>
+              <p class="lc-card-address">{{ l.address }}</p>
+              <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
+              <div class="lc-card-footer">
+                <span class="lc-agent">
+                  <span class="lc-agent-thumb"></span>
+                  <span class="lc-agent-note">{{ l.kelly_comments }}</span>
+                </span>
+                <span class="lc-card-cta">
+                  View Listing <span class="fa fa-arrow-right" style="font-size:10px;"></span>
+                </span>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+
+        {# Sold listings — de-emphasized #}
+        {% for listing in soldListings %}
+          {% set l = listing.data %}
+          {% set lBeds  = l.beds or l.bedrooms %}
+          {% set lBaths = l.baths or l.bathrooms %}
+          {% set lSqft  = l.sqft or l.squarefoot %}
+          <div class="lc-card lc-sold">
+            <div class="lc-card-photo">
+              <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
+              <span class="lc-badge-sold">Sold</span>
+              {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
+            </div>
+            <div class="lc-card-body">
+              <ul class="lc-card-specs">
+                {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
+                {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
+                {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
+              </ul>
+              <p class="lc-card-address">{{ l.address }}</p>
+              <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
+              <div class="lc-card-footer">
+                <span class="lc-agent">
+                  <span class="lc-agent-thumb"></span>
+                  <span class="lc-agent-note">{{ l.kelly_comments or "Closed!" }}</span>
+                </span>
+                <span class="lc-card-meta">{{ l.comments }}</span>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

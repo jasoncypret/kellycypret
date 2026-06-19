@@ -25,7 +25,7 @@ collections:
         allow_add: true
         collapsed: false
         summary: "{{fields.tag}}"
-        field: 
+        field:
           label: Tag
           name: tag
           widget: string
@@ -53,19 +53,138 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
+      # ── Core ──────────────────────────────────────────────────────────────
       - {label: Address, name: address, widget: string, required: true}
       - {label: City, name: city, widget: string, required: true}
-      - {label: State, name: state, widget: string, required: true}
-      - {label: Status, name: status, widget: select, options: [active, pending, sold], required: true}
-      - {label: Hero Image, name: hero_image, widget: image, required: true}
-      - {label: External URL, name: external_url, widget: string, required: true}
-      - {label: Price, name: price, widget: string, required: false}
-      - {label: Old Price, name: old_price, widget: string, required: false}
-      - {label: Bedrooms, name: bedrooms, widget: string, required: false}
-      - {label: Bathrooms, name: bathrooms, widget: string, required: false}
-      - {label: Square Footage, name: squarefoot, widget: string, required: false}
-      - {label: Comments, name: comments, widget: string, required: false}
-      - {label: Kelly Comments, name: kelly_comments, widget: string, required: false}
+      - {label: State, name: state, widget: string, required: true, default: TX}
+      - {label: Status, name: status, widget: select, options: [active, pending, sold], required: true, default: active}
+      - {label: Hero Image, name: hero_image, widget: image, required: false, hint: "Main card image for the homepage"}
+      - {label: External URL, name: external_url, widget: string, required: false, hint: "Link to Zillow/MLS listing — leave blank if using an internal detail page"}
       - {label: Featured, name: featured, widget: boolean, default: false, required: false}
-      - {label: Order, name: order, widget: number, required: false, value_type: int}
+      - {label: Order, name: order, widget: number, required: false, value_type: int, hint: "Display order on homepage (1 = first)"}
       - {label: Permalink, name: permalink, widget: boolean, default: false, required: false}
+
+      # ── Pricing & specs ───────────────────────────────────────────────────
+      - {label: Price, name: price, widget: string, required: false, hint: "e.g. $685,000"}
+      - {label: Old/Reduced Price, name: old_price, widget: string, required: false}
+      - {label: Bedrooms (short), name: beds, widget: string, required: false, hint: "For detail page — e.g. 4"}
+      - {label: Bathrooms (short), name: baths, widget: string, required: false, hint: "For detail page — e.g. 3.5"}
+      - {label: Square Footage (short), name: sqft, widget: string, required: false, hint: "For detail page — e.g. 3,605"}
+      - {label: Lot Size (acres), name: lot, widget: string, required: false, hint: "e.g. 0.71"}
+      - {label: Year Built, name: year_built, widget: string, required: false}
+      - {label: Price Per SqFt, name: price_per_sqft, widget: string, required: false, hint: "e.g. $190"}
+      - {label: Bedrooms (full text), name: bedrooms, widget: string, required: false, hint: "For homepage card — e.g. '3 Bedrooms'"}
+      - {label: Bathrooms (full text), name: bathrooms, widget: string, required: false, hint: "For homepage card — e.g. '2 Bathrooms'"}
+      - {label: Square Footage (full text), name: squarefoot, widget: string, required: false, hint: "For homepage card — e.g. 1910"}
+      - {label: Comments, name: comments, widget: string, required: false}
+      - {label: Kelly's Comments, name: kelly_comments, widget: string, required: false}
+
+      # ── Detail page setup ─────────────────────────────────────────────────
+      - {label: Has Detail Page, name: has_detail_page, widget: boolean, default: false, required: false, hint: "Turn ON to publish an internal page at /for-sale/[slot]"}
+      - {label: Page Slot, name: page_slot, widget: number, required: false, value_type: int, hint: "Determines URL — 1 = /for-sale/1/ — this is printed on signs, do not change after publishing"}
+      - {label: Tagline, name: tagline, widget: string, required: false, hint: "One-line teaser shown under the address"}
+      - {label: ZIP Code, name: zip, widget: string, required: false, hint: "Shown under the address on the detail page, e.g. 75224"}
+      - {label: Status Badge, name: status_badge, widget: string, required: false, hint: "Small label next to the address, e.g. Just Listed or Price Reduced"}
+      - {label: Photo Folder Slug, name: photos_slug, widget: string, required: false, hint: "Folder name under assets/images/properties/ — usually matches this file's slug, e.g. 610-s-manus-dr"}
+      - {label: Total Photo Count, name: photo_count, widget: number, required: false, value_type: int, hint: "Total photos available for 'View all' lightbox, e.g. 62"}
+
+      # ── Section headings & copy (detail page) ───────────────────────────
+      - {label: Gallery Title, name: gallery_title, widget: string, required: false, default: "Tour the Home"}
+      - {label: Gallery Description, name: gallery_desc, widget: text, required: false, hint: "Short intro under the gallery heading"}
+      - {label: Video Title, name: reel_title, widget: string, required: false, default: "Walk through every room."}
+      - {label: Video Description, name: reel_desc, widget: text, required: false}
+      - {label: 3D Tour Title, name: tour_title, widget: string, required: false, default: "3D Walkthrough"}
+      - {label: 3D Tour Description, name: tour_desc, widget: text, required: false}
+      - {label: About Title, name: about_title, widget: string, required: false, hint: "Heading above the property description"}
+      - {label: Agent CTA Title, name: agent_title, widget: string, required: false, default: "Let's Walk It Together"}
+      - {label: Agent CTA Text, name: agent_desc, widget: text, required: false, hint: "Paragraph in the agent contact section"}
+
+      # ── Agent contact ─────────────────────────────────────────────────────
+      - {label: Phone (display), name: phone_display, widget: string, required: false, default: "(469) 812-8100"}
+      - {label: Phone (dial), name: phone_dial, widget: string, required: false, default: "+14698128100", hint: "E.164 format for tel: links, e.g. +14698128100"}
+      - {label: Email, name: email, widget: string, required: false, default: "Kelly@NRRTsold.com"}
+
+      # ── Media links ────────────────────────────────────────────────────────
+      - {label: YouTube Video ID, name: video_id, widget: string, required: false, hint: "For hero carousel video slide — e.g. Eic4JsdXFKo from youtube.com/shorts/Eic4JsdXFKo"}
+      - {label: Video URL, name: video_url, widget: string, required: false, hint: "YouTube embed URL, e.g. https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID"}
+      - {label: 3D Tour URL, name: tour_url, widget: string, required: false, hint: "Zillow or Matterport iframe src URL"}
+
+      # ── Hero carousel slides ───────────────────────────────────────────────
+      - label: Hero Carousel Slides
+        name: hero_slides
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.src}}"
+        fields:
+          - {label: Image, name: src, widget: image, required: true, hint: "Use full-size (1920px) images"}
+          - {label: Object Position, name: pos, widget: string, required: false, default: "center center", hint: "CSS object-position, e.g. 'center 35%'"}
+
+      # ── Gallery (10 curated photos) ────────────────────────────────────────
+      - label: Gallery Photos
+        name: gallery
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.caption}}"
+        fields:
+          - {label: Thumbnail, name: src, widget: image, required: true, hint: "800px thumb version"}
+          - {label: Full-Size, name: full, widget: image, required: true, hint: "1920px full version for lightbox"}
+          - {label: Layout Class, name: cls, widget: select, required: false, options: ["", wide, tall, "wide tall"], hint: "wide = 2 columns, tall = 2 rows"}
+          - {label: Caption, name: caption, widget: string, required: false}
+
+      # ── Highlights ─────────────────────────────────────────────────────────
+      - label: Highlights
+        name: highlights
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.label}}"
+        fields:
+          - {label: Icon, name: icon, widget: string, required: true, hint: "Font Awesome 4 icon name, e.g. tint, anchor, sun-o, tree"}
+          - {label: Label, name: label, widget: string, required: true}
+
+      # ── Video reel feature bullets ─────────────────────────────────────────
+      - label: Reel Features
+        name: reel_features
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.label}}"
+        fields:
+          - {label: Icon, name: icon, widget: string, required: true, hint: "Font Awesome 4 icon name"}
+          - {label: Label, name: label, widget: string, required: true}
+
+      # ── Facts tables ───────────────────────────────────────────────────────
+      - label: Facts — Interior
+        name: facts_interior
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.label}}: {{fields.value}}"
+        fields:
+          - {label: Label, name: label, widget: string, required: true}
+          - {label: Value, name: value, widget: string, required: true}
+
+      - label: Facts — Property
+        name: facts_property
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.label}}: {{fields.value}}"
+        fields:
+          - {label: Label, name: label, widget: string, required: true}
+          - {label: Value, name: value, widget: string, required: true}
+
+      - label: Facts — Construction
+        name: facts_construction
+        widget: list
+        required: false
+        collapsed: true
+        summary: "{{fields.label}}: {{fields.value}}"
+        fields:
+          - {label: Label, name: label, widget: string, required: true}
+          - {label: Value, name: value, widget: string, required: true}
+
+      # ── Description body ───────────────────────────────────────────────────
+      - {label: Description, name: body, widget: markdown, required: false, hint: "Full property description shown in the About section"}

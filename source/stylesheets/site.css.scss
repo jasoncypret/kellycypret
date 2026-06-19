@@ -9547,6 +9547,14 @@ textarea.form-control {
   .testimony-section .owl-carousel .owl-stage-outer {
     padding: 1em 0 2em 0;
     position: relative; }
+  .testimony-section .owl-carousel .owl-stage {
+    display: flex; }
+  .testimony-section .owl-carousel .owl-item {
+    display: flex;
+    float: none; }
+  .testimony-section .owl-carousel .item {
+    display: flex;
+    width: 100%; }
   .testimony-section .owl-nav {
     position: absolute;
     top: 100%;
@@ -9605,7 +9613,9 @@ textarea.form-control {
         background: $main-blue; }
 
 .testimony-wrap {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   position: relative;
   background: white;
   padding: 0 20px;
@@ -9613,6 +9623,12 @@ textarea.form-control {
   -webkit-box-shadow: 0px 5px 21px -14px rgba(0, 0, 0, 0.14);
   -moz-box-shadow: 0px 5px 21px -14px rgba(0, 0, 0, 0.14);
   box-shadow: 0px 5px 21px -14px rgba(0, 0, 0, 0.14); }
+  .testimony-wrap .text {
+    display: flex;
+    flex-direction: column;
+    flex: 1; }
+    .testimony-wrap .text > p.mb-4 {
+      flex: 1; }
   .testimony-wrap .user-img {
     width: 80px;
     height: 80px;
