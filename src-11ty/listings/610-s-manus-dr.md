@@ -41,57 +41,65 @@ external_url: ""
 featured: true
 order: 1
 hero_slides:
-  - src: /assets/images/properties/610-s-manus-dr/full/62.webp
-    pos: "center 42%"
-  - src: /assets/images/properties/610-s-manus-dr/full/55.webp
+  - src: /assets/images/properties/610-s-manus-dr/full/40.webp
     pos: "center center"
-  - src: /assets/images/properties/610-s-manus-dr/full/58.webp
-    pos: "center 35%"
+  - src: /assets/images/properties/610-s-manus-dr/full/46.webp
+    pos: "center center"
+  - src: /assets/images/properties/610-s-manus-dr/full/38.webp
+    pos: "center center"
+  - src: /assets/images/properties/610-s-manus-dr/full/06.webp
+    pos: "center center"
+  - src: /assets/images/properties/610-s-manus-dr/full/16.webp
+    pos: "center center"
   - src: /assets/images/properties/610-s-manus-dr/full/01.webp
     pos: "center center"
-  - src: /assets/images/properties/610-s-manus-dr/full/08.webp
+  - src: /assets/images/properties/610-s-manus-dr/full/24.webp
     pos: "center center"
-  - src: /assets/images/properties/610-s-manus-dr/full/45.webp
-    pos: "center 38%"
+  - src: /assets/images/properties/610-s-manus-dr/full/27.webp
+    pos: "center center"
+  - src: /assets/images/properties/610-s-manus-dr/full/62.webp
+    pos: "center center"
+  - src: /assets/images/properties/610-s-manus-dr/full/56.webp
+    pos: "center center"
 gallery:
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/58.webp
-    full: /assets/images/properties/610-s-manus-dr/full/58.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/40.webp
+    full: /assets/images/properties/610-s-manus-dr/full/40.webp
     cls: "wide tall"
     caption: "Lakeside balcony view"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/45.webp
-    full: /assets/images/properties/610-s-manus-dr/full/45.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/46.webp
+    full: /assets/images/properties/610-s-manus-dr/full/46.webp
     cls: ""
     caption: "Pool & lake"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/08.webp
-    full: /assets/images/properties/610-s-manus-dr/full/08.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/38.webp
+    full: /assets/images/properties/610-s-manus-dr/full/38.webp
     cls: ""
     caption: "Great room to the water"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/04.webp
-    full: /assets/images/properties/610-s-manus-dr/full/04.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/06.webp
+    full: /assets/images/properties/610-s-manus-dr/full/06.webp
     cls: ""
     caption: "Entry foyer & staircase"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/12.webp
-    full: /assets/images/properties/610-s-manus-dr/full/12.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/16.webp
+    full: /assets/images/properties/610-s-manus-dr/full/16.webp
     cls: ""
     caption: "Kitchen"
   - src: /assets/images/properties/610-s-manus-dr/thumbs/01.webp
     full: /assets/images/properties/610-s-manus-dr/full/01.webp
     cls: "wide"
     caption: "Front exterior"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/26.webp
-    full: /assets/images/properties/610-s-manus-dr/full/26.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/24.webp
+    full: /assets/images/properties/610-s-manus-dr/full/24.webp
     cls: ""
     caption: "Primary bedroom"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/33.webp
-    full: /assets/images/properties/610-s-manus-dr/full/33.webp
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/27.webp
+    full: /assets/images/properties/610-s-manus-dr/full/27.webp
     cls: ""
     caption: "Primary bath"
-  - src: /assets/images/properties/610-s-manus-dr/thumbs/55.webp
-    full: /assets/images/properties/610-s-manus-dr/full/55.webp
-    cls: "wide"
-    caption: "Pond & Dallas skyline"
   - src: /assets/images/properties/610-s-manus-dr/thumbs/62.webp
     full: /assets/images/properties/610-s-manus-dr/full/62.webp
+    cls: "wide"
+    caption: "Pond & Dallas skyline"
+  - src: /assets/images/properties/610-s-manus-dr/thumbs/56.webp
+    full: /assets/images/properties/610-s-manus-dr/full/56.webp
     cls: "wide"
     caption: "Overhead aerial"
 highlights:
