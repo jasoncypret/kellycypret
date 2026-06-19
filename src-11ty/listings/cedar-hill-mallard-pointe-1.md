@@ -2,7 +2,7 @@
 address: 1105 Meadow Crest Lane
 city: Mansfield
 state: TX
-status: active
+status: sold
 hero_image: /assets/images/01-1105-meadow-crest-ln-final-1.jpg
 external_url: https://nrrtsold.com/agents/Kelly-Cypret/8932523
 price: $370,000
