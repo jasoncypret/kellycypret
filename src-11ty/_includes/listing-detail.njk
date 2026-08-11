@@ -424,10 +424,16 @@ showHomeHero: false
   <div class="lp-wrap">
     <div class="lp-info-card">
       <div class="lp-info-left">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
-          <span class="lp-eyebrow" style="margin:0;">For Sale · {{ city }}</span>
+        {# Closed listings stay published as a portfolio piece — the eyebrow and
+           badge shift to a muted "Sold" so they don't read as a live listing. #}
+        {% set isSold = status == 'sold' %}
+        {% if isSold %}{% set statusLabel = "Sold" %}
+        {% elif status == 'pending' %}{% set statusLabel = "Pending" %}
+        {% else %}{% set statusLabel = "For Sale" %}{% endif %}
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap;">
+          <span class="lp-eyebrow" style="margin:0;">{{ statusLabel }} · {{ city }}</span>
           {% if status_badge %}
-          <span style="display:inline-flex;align-items:center;font-family:var(--lp-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:4px;background:var(--lp-coral);color:#fff;">{{ status_badge }}</span>
+          <span style="display:inline-flex;align-items:center;font-family:var(--lp-sans);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:4px;{% if isSold %}background:#eeeae4;color:#9a9183;border:1px solid #d9d4cc;{% else %}background:var(--lp-coral);color:#fff;{% endif %}">{{ status_badge }}</span>
           {% endif %}
         </div>
         <h1 class="lp-h1" style="font-size: clamp(28px,4vw,44px); margin-bottom: 6px;">{{ address }}</h1>

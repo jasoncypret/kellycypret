@@ -56,6 +56,10 @@
   font-family: "Sedan", "Georgia", serif; font-size: 34px;
   color: #5c4f3e; margin: 0 0 16px; line-height: 1;
 }
+.lc-featured-tagline {
+  font-family: "Sedan", "Georgia", serif; font-size: 20px;
+  color: #5c4f3e; margin: 0 0 16px; line-height: 1.4; max-width: 26em;
+}
 .lc-specs { list-style: none; display: flex; gap: 18px; padding: 0; margin: 0 0 24px; font-size: 14px; color: #666; }
 .lc-specs li { display: flex; align-items: center; gap: 6px; }
 .lc-specs .fa { color: #80745b; }
@@ -82,8 +86,12 @@
   box-shadow: 0 5px 21px -14px rgba(0,0,0,.14);
   opacity: .72; cursor: default;
 }
+/* Sold listings that kept their detail page stay clickable */
+.lc-card.lc-sold.lc-sold-link { cursor: pointer; transition: opacity .3s ease, box-shadow .3s ease; }
+.lc-card.lc-sold.lc-sold-link:hover { opacity: .92; }
 .lc-card.lc-active:hover { box-shadow: 0 12px 48px -10px rgba(225,98,98,.28); }
 .lc-card.lc-sold:hover   { box-shadow: 0 5px 39px -14px rgba(0,0,0,.26); }
+.lc-card.lc-sold-link:hover .lc-card-photo img { transform: scale(1.04); }
 
 .lc-card-photo { position: relative; height: 210px; overflow: hidden; }
 .lc-card-photo img {
@@ -142,6 +150,45 @@
 }
 </style>
 
+{# ── Sold card — shared by both layouts below.
+     Renders as an <a> when the listing kept its detail page, otherwise a
+     plain <div> (older listings only ever linked out to nrrtsold.com). ── #}
+{% macro soldCard(l) %}
+  {% set linked = l.has_detail_page and l.page_slot %}
+  {% set lBeds  = l.beds or l.bedrooms %}
+  {% set lBaths = l.baths or l.bathrooms %}
+  {% set lSqft  = l.sqft or l.squarefoot %}
+  <{% if linked %}a class="lc-card lc-sold lc-sold-link" href="{{ l.listing_url }}"{% else %}div class="lc-card lc-sold"{% endif %}>
+    <div class="lc-card-photo">
+      <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
+      <span class="lc-badge-sold">Sold</span>
+      {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
+    </div>
+    <div class="lc-card-body">
+      <ul class="lc-card-specs">
+        {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
+        {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
+        {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
+      </ul>
+      <p class="lc-card-address">{{ l.address }}</p>
+      <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
+      <div class="lc-card-footer">
+        <span class="lc-agent">
+          <span class="lc-agent-thumb"></span>
+          <span class="lc-agent-note">{{ l.kelly_comments or "Closed!" }}</span>
+        </span>
+        {% if linked %}
+        <span class="lc-card-cta">
+          View Listing <span class="fa fa-arrow-right" style="font-size:10px;"></span>
+        </span>
+        {% else %}
+        <span class="lc-card-meta">{{ l.comments }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </{% if linked %}a{% else %}div{% endif %}>
+{% endmacro %}
+
 {# ── Separate featured listings into active vs sold ── #}
 {% set activeListings = [] %}
 {% set soldListings = [] %}
@@ -185,19 +232,24 @@
           {% else %}
             <img src="{{ f.hero_image }}" alt="{{ f.address }}">
           {% endif %}
-          <span class="lc-featured-badge">For Sale · Just Listed</span>
+          <span class="lc-featured-badge">{{ f.status_badge or "For Sale" }}</span>
         </div>
         <div class="lc-featured-body">
           <h3>{{ f.address }}</h3>
           <p class="lc-featured-city">{{ f.city }}, {{ f.state }}</p>
-          {% if f.price %}<p class="lc-featured-price">{{ f.price }}</p>{% endif %}
+          {# Coming-soon listings carry no price — the tagline holds that space #}
+          {% if f.price %}
+            <p class="lc-featured-price">{{ f.price }}</p>
+          {% elif f.tagline %}
+            <p class="lc-featured-tagline">{{ f.tagline }}</p>
+          {% endif %}
           <ul class="lc-specs">
             {% if fBeds %}<li><span class="fa fa-bed"></span>{{ fBeds }}</li>{% endif %}
             {% if fBaths %}<li><span class="fa fa-bath"></span>{{ fBaths }}</li>{% endif %}
             {% if fSqft %}<li><span class="fa fa-arrows-alt"></span>{{ fSqft }}</li>{% endif %}
           </ul>
           <span class="lc-view-cta">
-            View Listing <span class="fa fa-chevron-right" style="font-size:10px;"></span>
+            {{ f.card_cta or "View Listing" }} <span class="fa fa-chevron-right" style="font-size:10px;"></span>
           </span>
         </div>
       </a>
@@ -211,33 +263,7 @@
         </div>
         <div class="lc-grid">
           {% for listing in soldListings %}
-            {% set l = listing.data %}
-            {% set lBeds  = l.beds or l.bedrooms %}
-            {% set lBaths = l.baths or l.bathrooms %}
-            {% set lSqft  = l.sqft or l.squarefoot %}
-            <div class="lc-card lc-sold">
-              <div class="lc-card-photo">
-                <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
-                <span class="lc-badge-sold">Sold</span>
-                {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
-              </div>
-              <div class="lc-card-body">
-                <ul class="lc-card-specs">
-                  {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
-                  {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
-                  {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
-                </ul>
-                <p class="lc-card-address">{{ l.address }}</p>
-                <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
-                <div class="lc-card-footer">
-                  <span class="lc-agent">
-                    <span class="lc-agent-thumb"></span>
-                    <span class="lc-agent-note">{{ l.kelly_comments or "Closed!" }}</span>
-                  </span>
-                  <span class="lc-card-meta">{{ l.comments }}</span>
-                </div>
-              </div>
-            </div>
+            {{ soldCard(listing.data) }}
           {% endfor %}
         </div>
       {% endif %}
@@ -283,33 +309,7 @@
 
         {# Sold listings — de-emphasized #}
         {% for listing in soldListings %}
-          {% set l = listing.data %}
-          {% set lBeds  = l.beds or l.bedrooms %}
-          {% set lBaths = l.baths or l.bathrooms %}
-          {% set lSqft  = l.sqft or l.squarefoot %}
-          <div class="lc-card lc-sold">
-            <div class="lc-card-photo">
-              <img src="{{ l.hero_image }}" alt="{{ l.address }}" loading="lazy">
-              <span class="lc-badge-sold">Sold</span>
-              {% if l.price %}<span class="lc-card-price">{{ l.price }}</span>{% endif %}
-            </div>
-            <div class="lc-card-body">
-              <ul class="lc-card-specs">
-                {% if lBeds %}<li><span class="fa fa-bed"></span>{{ lBeds }}</li>{% endif %}
-                {% if lBaths %}<li><span class="fa fa-bath"></span>{{ lBaths }}</li>{% endif %}
-                {% if lSqft %}<li><span class="fa fa-arrows-alt"></span>{{ lSqft }} sq ft</li>{% endif %}
-              </ul>
-              <p class="lc-card-address">{{ l.address }}</p>
-              <p class="lc-card-city">{{ l.city }}, {{ l.state }}</p>
-              <div class="lc-card-footer">
-                <span class="lc-agent">
-                  <span class="lc-agent-thumb"></span>
-                  <span class="lc-agent-note">{{ l.kelly_comments or "Closed!" }}</span>
-                </span>
-                <span class="lc-card-meta">{{ l.comments }}</span>
-              </div>
-            </div>
-          </div>
+          {{ soldCard(listing.data) }}
         {% endfor %}
       </div>
     {% endif %}

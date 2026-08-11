@@ -13,6 +13,6 @@ squarefoot: "2103"
 comments: Last Month
 kelly_comments: Sold in 5 days!
 featured: true
-order: 2
+order: 3
 permalink: false
 ---

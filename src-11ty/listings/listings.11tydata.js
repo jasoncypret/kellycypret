@@ -7,10 +7,19 @@ module.exports = {
       return false;
     },
     layout: data => {
-      if (data.has_detail_page) {
-        return 'listing-detail.njk';
+      if (!data.has_detail_page) {
+        return false;
       }
-      return false;
+      // `coming-soon` is the short template used before the photo shoot lands —
+      // flip page_template back to `full` once real photos are in.
+      return data.page_template === 'coming-soon'
+        ? 'listing-coming-soon.njk'
+        : 'listing-detail.njk';
+    },
+    title: data => {
+      if (data.has_detail_page && data.address) {
+        return `${data.address}, ${data.city}, ${data.state} — Kelly Cypret, Realtor®`;
+      }
     },
     listing_url: data => {
       if (data.has_detail_page && data.page_slot) {

@@ -3,10 +3,10 @@ address: 610 S Manus Dr
 city: Dallas
 state: TX
 zip: "75224"
-status: active
-status_badge: Just Listed
+status: sold
+status_badge: Sold
 has_detail_page: true
-page_slot: 1
+page_slot: 2
 photos_slug: 610-s-manus-dr
 photo_count: 62
 price: "$685,000"
@@ -27,9 +27,9 @@ reel_desc: A room-by-room tour of 610 S Manus Dr — sunlit interiors, hardwood 
 tour_title: 3D Walkthrough
 tour_desc: Explore every room at your own pace with the interactive Zillow 3D Home tour.
 about_title: A Rare Waterfront Canvas
-agent_title: Let's Walk It Together
-agent_desc: I'm Kelly Cypret with Nolen Rodgers Realty. Want a private showing of 610 S Manus Dr, or have a question about the home? Call or text me — I'd love to help you picture the possibilities here.
-kelly_comments: Waterfront living on a private pond — dock, pool & timeless character
+agent_title: Thinking About Selling Yours?
+agent_desc: I'm Kelly Cypret with Nolen Rodgers Realty. This one has found its new owner — but if you love this pocket of Dallas, or you're wondering what your own home would bring today, call or text me. I'd love to help.
+kelly_comments: Sold!
 phone_display: "(469) 812-8100"
 phone_dial: "+14698128100"
 email: "Kelly@NRRTsold.com"

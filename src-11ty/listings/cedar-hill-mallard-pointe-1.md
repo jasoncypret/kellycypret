@@ -11,8 +11,8 @@ bedrooms: 3 Bedrooms
 bathrooms: 2 Bathrooms
 squarefoot: "1910"
 comments: ""
-kelly_comments: This move-in ready home is officially on the market!
+kelly_comments: Sold!
 featured: true
-order: 1
+order: 2
 permalink: false
 ---
