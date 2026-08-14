@@ -444,13 +444,17 @@ showHomeHero: false
           <span class="lp-spec-pill"><span class="fa fa-bath"></span><strong>{{ baths }} Baths</strong></span>
           <span class="lp-spec-div"></span>
           <span class="lp-spec-pill"><span class="fa fa-arrows-alt"></span><strong>{{ sqft }} Sq Ft</strong></span>
+          {# Lot size isn't always in the listing data — drop the pill rather than
+             render a bare "Acre". #}
+          {% if lot %}
           <span class="lp-spec-div"></span>
           <span class="lp-spec-pill"><span class="fa fa-tree"></span><strong>{{ lot }} Acre</strong></span>
+          {% endif %}
         </div>
       </div>
       <div class="lp-info-right">
         <div class="lp-price">{{ price }}</div>
-        <div class="lp-price-meta">{{ price_per_sqft }}/sqft · Built {{ year_built }}</div>
+        <div class="lp-price-meta">{% if price_per_sqft %}{{ price_per_sqft }}/sqft · {% endif %}Built {{ year_built }}</div>
         <div class="lp-btn-row" style="justify-content:flex-end;">
           <a class="lp-btn lp-btn-olive" href="tel:{{ phone_dial }}"><span class="fa fa-phone"></span> Call Kelly</a>
           <a class="lp-btn lp-btn-outline-olive" href="sms:{{ phone_dial }}"><span class="fa fa-commenting-o"></span> Text</a>
