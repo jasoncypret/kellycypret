@@ -28,7 +28,7 @@ tour_title: 3D Walkthrough
 tour_desc: Explore every room at your own pace with the interactive Zillow 3D Home tour.
 about_title: A Rare Waterfront Canvas
 agent_title: Thinking About Selling Yours?
-agent_desc: I'm Kelly Cypret with Nolen Rodgers Realty. This one has found its new owner — but if you love this pocket of Dallas, or you're wondering what your own home would bring today, call or text me. I'd love to help.
+agent_desc: I'm Kelly Cypret with Nolen Rogers Realty. This one has found its new owner — but if you love this pocket of Dallas, or you're wondering what your own home would bring today, call or text me. I'd love to help.
 kelly_comments: Sold!
 phone_display: "(469) 812-8100"
 phone_dial: "+14698128100"

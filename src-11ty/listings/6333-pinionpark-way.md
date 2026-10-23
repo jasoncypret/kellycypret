@@ -29,7 +29,7 @@ tour_title: 3D Walkthrough
 tour_desc: Explore every room at your own pace with the interactive Zillow 3D Home tour.
 about_title: "Beautifully Maintained & Move-In Ready"
 agent_title: Want to See It in Person?
-agent_desc: I'm Kelly Cypret with Nolen Rodgers Realty. If 6333 Pinionpark Way looks like your next home, call or text me and I'll get you in for a showing. And if you're weighing a move of your own, I'm happy to talk through what your home would bring in today's market.
+agent_desc: I'm Kelly Cypret with Nolen Rogers Realty. If 6333 Pinionpark Way looks like your next home, call or text me and I'll get you in for a showing. And if you're weighing a move of your own, I'm happy to talk through what your home would bring in today's market.
 kelly_comments: "Just listed!"
 card_cta: "Take a Look"
 phone_display: "(469) 812-8100"
