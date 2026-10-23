@@ -3,7 +3,7 @@ address: 6333 Pinionpark Way
 city: Fort Worth
 state: TX
 zip: "76179"
-status: active
+status: "sold"
 status_badge: Just Listed
 has_detail_page: true
 page_slot: 1
